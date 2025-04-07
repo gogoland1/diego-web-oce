@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciencias Oceánicas</title>
+    <style>
+        /* Variables */
+        :root {
+            --color-primary: #1a73e8;
+            --color-secundary: #174ea6;
+            --color-background: #f8f9fa;
+            --color-text: #202124;
+            --color-text-light: #5f6368;
+            --spacing: 20px;
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+        }
+        
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            color: var(--color-text);
+            background-color: var(--color-background);
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* Layout */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing);
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .site-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+        
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .main-nav a {
+            color: var(--color-text);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .main-nav a:hover {
+            color: var(--color-primary);
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-text);
+        }
+        
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--color-text);
+        }
+        
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: var(--color-text-light);
+            font-size: 1.1rem;
+        }
+        
+        /* Módulos */
+        .modules {
+            padding: 40px 0;
+        }
+        
+        .modules-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .modules-title h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .modules-title p {
+            color: var(--color-text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        
+        .module-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .module-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .module-fisica .module-img {
+            background-image: url('/api/placeholder/600/400');
+        }
+        
+        .module-biologia .module-img {
+            background-image: url('/api/placeholder/600/400');
+        }
+        
+        .module-geologia .module-img {
+            background-image: url('/api/placeholder/600/400');
+        }
+        
+        .module-quimica .module-img {
+            background-image: url('/api/placeholder/600/400');
+        }
+        
+        .module-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .module-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--color-primary);
+        }
+        
+        .module-content p {
+            margin-bottom: 20px;
+            color: var(--color-text-light);
+            flex-grow: 1;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--color-primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: var(--color-secundary);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: white;
+            padding: 40px 0;
+            margin-top: 40px;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .copyright {
+            color: var(--color-text-light);
+        }
+        
+        .footer-links ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        
+        .footer-links a {
+            color: var(--color-text-light);
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--color-primary);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .main-nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: white;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                padding: 20px;
+                display: none;
+            }
+            
+            .main-nav.active {
+                display: block;
+            }
+            
+            .main-nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container site-header">
+            <div class="logo">Ciencias Oceánicas</div>
+            <button class="menu-toggle">☰</button>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#fisica">Oceanografía Física</a></li>
+                    <li><a href="#biologia">Biología Marina</a></li>
+                    <li><a href="#geologia">Geología Marina</a></li>
+                    <li><a href="#quimica">Oceanografía Química</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Explorando los Océanos</h1>
+            <p>Un enfoque simple para entender los océanos a través de cuatro disciplinas fundamentales.</p>
+        </div>
+    </section>
+    
+    <section class="modules">
+        <div class="container">
+            <div class="modules-title">
+                <h2>Nuestros Módulos</h2>
+                <p>Cuatro pilares para entender la ciencia de los océanos</p>
+            </div>
+            
+            <div class="modules-grid">
+                <a href="#fisica" class="module-card module-fisica" id="fisica">
+                    <div class="module-img"></div>
+                    <div class="module-content">
+                        <h3>Oceanografía Física</h3>
+                        <p>Estudio de los movimientos y las propiedades físicas de las aguas oceánicas: corrientes, mareas, olas y la estructura térmica del océano.</p>
+                        <div class="btn">Explorar módulo</div>
+                    </div>
+                </a>
+                
+                <a href="#biologia" class="module-card module-biologia" id="biologia">
+                    <div class="module-img"></div>
+                    <div class="module-content">
+                        <h3>Biología Marina</h3>
+                        <p>Estudio de los organismos que viven en el océano y sus interacciones con el ambiente marino, desde microorganismos hasta grandes mamíferos.</p>
+                        <div class="btn">Explorar módulo</div>
+                    </div>
+                </a>
+                
+                <a href="#geologia" class="module-card module-geologia" id="geologia">
+                    <div class="module-img"></div>
+                    <div class="module-content">
+                        <h3>Geología Marina</h3>
+                        <p>Estudio de la estructura y formación del suelo marino, incluyendo la tectónica de placas, sedimentación y recursos minerales.</p>
+                        <div class="btn">Explorar módulo</div>
+                    </div>
+                </a>
+                
+                <a href="#quimica" class="module-card module-quimica" id="quimica">
+                    <div class="module-img"></div>
+                    <div class="module-content">
+                        <h3>Oceanografía Química</h3>
+                        <p>Análisis de la composición química del agua marina, ciclos biogeoquímicos y contaminación marina, y su impacto en el ecosistema.</p>
+                        <div class="btn">Explorar módulo</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container footer-content">
+            <div class="copyright">
+                <p>© 2025 Ciencias Oceánicas. Todos los derechos reservados.</p>
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="#">Acerca de</a></li>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Recursos</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // JavaScript mínimo para la navegación móvil
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+            
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+            });
+            
+            // Cerrar menú al hacer clic en un enlace
+            const navLinks = document.querySelectorAll('.main-nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mainNav.classList.remove('active');
+                });
+            });
+            
+            // Desplazamiento suave
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
